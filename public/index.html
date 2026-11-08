@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="paper">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>( بين قوسين ) | عمود سياسي ساخر يُكتب بالذكاء الاصطناعي</title>
+  <!-- Google Fonts: Amiri (Classic Newspaper Serif), Readex Pro & Cairo (Sharp Modern Headlines) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@600;700;800;900&family=Readex+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+
+  <!-- Top Live Status & Kuwait 10 PM Countdown Ribbon -->
+  <div class="top-ribbon">
+    <div class="container ribbon-inner">
+      <div class="ribbon-right">
+        <span class="pulse-dot"></span>
+        <span class="ribbon-label">توقيت الكويت الآن:</span>
+        <strong id="kuwaitLiveClock" class="mono-num">--:--:--</strong>
+        <span class="ribbon-sep">|</span>
+        <span class="ribbon-schedule">موعد النشر الآلي: <strong>يومياً 10:00 مساءً</strong></span>
+      </div>
+      <div class="ribbon-center">
+        <span class="countdown-badge">
+          ⏳ المقال القادم بعد: <strong id="nextEditionCountdown" class="mono-num">-- ساعة : -- دقيقة : -- ثانية</strong>
+        </span>
+      </div>
+      <div class="ribbon-left">
+        <button id="themeToggleBtn" class="tool-pill" title="تبديل وضع القراءة (ورق جريدة / ليلي)">
+          <span id="themeIcon">🌙</span> <span id="themeLabel">الوضع الليلي</span>
+        </button>
+        <div class="font-controls">
+          <button id="fontIncreaseBtn" class="tool-pill" title="تكبير الخط">A+</button>
+          <button id="fontDecreaseBtn" class="tool-pill" title="تصغير الخط">A-</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Newspaper Masthead Header -->
+  <header class="masthead">
+    <div class="container">
+      <div class="masthead-top-meta">
+        <span>الطبعة الرقمية المسائية</span>
+        <span>•</span>
+        <span>عمود يومي ساخر</span>
+        <span>•</span>
+        <span id="currentEditionBadge">العدد #142</span>
+      </div>
+
+      <div class="masthead-main">
+        <!-- Original Independent Caricature SVG -->
+        <div class="caricature-box" title="بين قوسين">
+          <svg viewBox="0 0 180 180" class="caricature-svg" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="bgGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#b91c1c" stop-opacity="0.18"/>
+                <stop offset="100%" stop-color="#111827" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <circle cx="90" cy="90" r="82" fill="url(#bgGlow)" stroke="currentColor" stroke-width="2.5" stroke-dasharray="6 3"/>
+            <circle cx="90" cy="90" r="75" fill="none" stroke="#b91c1c" stroke-width="1.5"/>
+
+            <!-- Giant Iconic Parentheses ( ) -->
+            <path d="M 35 42 C 16 70, 16 110, 35 138" fill="none" stroke="#b91c1c" stroke-width="6" stroke-linecap="round"/>
+            <path d="M 145 42 C 164 70, 164 110, 145 138" fill="none" stroke="#b91c1c" stroke-width="6" stroke-linecap="round"/>
+
+            <!-- Shoulders & Classic Press Suit -->
+            <path d="M 42 156 C 46 126, 134 126, 138 156" fill="#1f2937" stroke="currentColor" stroke-width="2.5"/>
+            <path d="M 72 128 L 90 156 L 108 128" fill="#f9fafb" stroke="currentColor" stroke-width="2"/>
+            <polygon points="82,134 98,134 94,142 98,154 90,159 82,154 86,142" fill="#b91c1c"/>
+
+            <!-- Head & Satirical Expression -->
+            <path d="M 58 72 C 58 42, 122 42, 122 72 C 122 108, 108 126, 90 126 C 72 126, 58 108, 58 72 Z" fill="#f5ebe0" stroke="#111827" stroke-width="2.8"/>
+
+            <!-- Hair -->
+            <path d="M 56 68 C 52 44, 75 34, 92 36 C 112 34, 128 46, 124 68 C 118 54, 102 48, 88 50 C 72 48, 62 56, 56 68 Z" fill="#374151" stroke="#111827" stroke-width="2"/>
+            <path d="M 65 44 Q 88 38 112 45" fill="none" stroke="#d1d5db" stroke-width="2.5" stroke-linecap="round"/>
+
+            <!-- Eyebrows -->
+            <path d="M 64 68 Q 74 58 84 66" fill="none" stroke="#111827" stroke-width="3.5" stroke-linecap="round"/>
+            <path d="M 96 66 Q 107 63 116 67" fill="none" stroke="#111827" stroke-width="3.5" stroke-linecap="round"/>
+
+            <!-- Glasses -->
+            <circle cx="74" cy="79" r="12" fill="#ffffff" fill-opacity="0.7" stroke="#111827" stroke-width="2.8"/>
+            <circle cx="74" cy="79" r="3.5" fill="#111827"/>
+            <circle cx="106" cy="79" r="13" fill="#111827" stroke="#b91c1c" stroke-width="3"/>
+            <circle cx="106" cy="79" r="7" fill="none" stroke="#ef4444" stroke-width="1.2" stroke-dasharray="3 2"/>
+            <circle cx="106" cy="79" r="3" fill="#ef4444"/>
+            <line x1="86" y1="79" x2="93" y2="79" stroke="#111827" stroke-width="2.8"/>
+
+            <!-- Nose, Mustache & Smirk -->
+            <path d="M 90 79 L 86 96 L 94 98" fill="none" stroke="#111827" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M 73 105 Q 90 100 109 104" fill="none" stroke="#374151" stroke-width="4" stroke-linecap="round"/>
+            <path d="M 78 111 Q 93 117 106 108" fill="none" stroke="#b91c1c" stroke-width="2.5" stroke-linecap="round"/>
+
+            <!-- Fountain Nib Pen -->
+            <g transform="translate(128, 102) rotate(-25)">
+              <polygon points="0,28 8,0 16,28" fill="#b91c1c" stroke="#111827" stroke-width="1.8"/>
+              <line x1="8" y1="0" x2="8" y2="16" stroke="#ffffff" stroke-width="1.5"/>
+              <circle cx="8" cy="17" r="2" fill="#ffffff"/>
+            </g>
+          </svg>
+        </div>
+
+        <!-- Giant Brand Title: ( بين قوسين ) -->
+        <div class="masthead-title-block">
+          <div class="brand-logo-wrap">
+            <span class="giant-paren paren-open">(</span>
+            <h1 class="brand-title">بين قوسين</h1>
+            <span class="giant-paren paren-close">)</span>
+          </div>
+          <p class="brand-kicker">عمود يومي مشاغب يشرّح تناقضات السياسة العالمية وحماقات الكبار بمشرط السخرية</p>
+        </div>
+
+        <!-- Daily Schedule Stamp -->
+        <div class="ai-stamp-box">
+          <div class="stamp-badge">
+            <span class="stamp-top">نشر آلي يومي</span>
+            <strong class="stamp-mid">بدون تدخل بشري</strong>
+            <span class="stamp-bot">يومياً 10:00 مساءً بتوقيت الكويت</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Official Statement Box (Clean, without the extra pills) -->
+      <div class="manifesto-banner">
+        <p class="manifesto-text">
+          <strong>بين قوسين</strong> صفحة رقمية لعمود سياسي ساخر يُكتب بالذكاء الاصطناعي بدون تدخل بشري ليعكس الصحافة المستقبلية بحدود الأدب واللوائح المحلية والذوق العام
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Single-Column Editorial Stream: Latest Article First, Followed by Previous Articles in Order -->
+  <main class="container editorial-stream-container">
+    <!-- Latest Article Section -->
+    <section id="latestArticleSection" class="latest-article-section">
+      <!-- Populated by app.js -->
+    </section>
+
+    <!-- Previous Articles Section (Chronological Order) -->
+    <section class="previous-articles-section">
+      <div class="section-divider-header">
+        <span class="divider-line"></span>
+        <h2 class="section-heading">🗞️ المقالات السابقة بالترتيب</h2>
+        <span class="divider-line"></span>
+      </div>
+      <div id="previousArticlesStream" class="previous-articles-stream">
+        <!-- Populated by app.js -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Quote Card Image Generator Modal (For WhatsApp / X sharing) -->
+  <div id="quoteModal" class="modal-backdrop hidden">
+    <div class="modal-box quote-modal-box">
+      <div class="modal-header">
+        <h3>📸 بطاقة اقتباس مصورة (جاهزة للنشر في واتساب و X)</h3>
+        <button id="closeQuoteModalBtn" class="close-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="canvas-preview-wrap">
+          <canvas id="quoteCanvas" width="1080" height="1080"></canvas>
+        </div>
+        <div class="quote-actions">
+          <button id="downloadQuoteImgBtn" class="btn-primary">⬇️ تحميل البطاقة كصورة (PNG)</button>
+          <button id="copyQuoteTextBtn" class="btn-secondary">📋 نسخ نص الشذرة مع التوقيع</button>
+          <button id="whatsappShareBtn" class="btn-whatsapp">💬 إرسال مباشر إلى واتساب</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Newspaper Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <h2>( بين قوسين )</h2>
+        <p class="footer-manifesto">
+          بين قوسين صفحة رقمية لعمود سياسي ساخر يُكتب بالذكاء الاصطناعي بدون تدخل بشري ليعكس الصحافة المستقبلية بحدود الأدب واللوائح المحلية والذوق العام.
+        </p>
+      </div>
+      <div class="footer-meta">
+        <p>🕙 يُنشر آلياً كل يوم الساعة <strong>10:00 مساءً</strong> بتوقيت دولة الكويت (UTC+3)</p>
+        <p class="copyright-note">جميع المقالات تُصاغ خوارزمياً كقراءة ساخرة في السياسة الدولية ولا تعبر عن مواقف رسمية.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/app.js"></script>
+</body>
+</html>

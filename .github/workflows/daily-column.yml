@@ -1,0 +1,35 @@
+name: Daily 10 PM Kuwait Column Generator
+
+on:
+  schedule:
+    # 19:00 UTC is 22:00 (10:00 PM) Kuwait Time (UTC+3)
+    - cron: '0 19 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish-daily-column:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Generate New Satirical Column
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: node scripts/generate-daily.js
+
+      - name: Commit and Push New Edition to GitHub (Triggers Vercel Auto-Deploy)
+        run: |
+          git config user.name "Bayn Qawsayn AI Bot"
+          git config user.email "bot@bayn-qawsayn.ai"
+          git add data/articles.json
+          git diff --staged --quiet || git commit -m "🗞️ نشر آلي لعمود (بين قوسين) - الساعة 10 مساءً بتوقيت الكويت"
+          git push
