@@ -9,9 +9,12 @@ on:
 permissions:
   contents: write
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   publish-daily-column:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -30,6 +33,6 @@ jobs:
         run: |
           git config user.name "Bayn Qawsayn AI Bot"
           git config user.email "bot@bayn-qawsayn.ai"
-          git add data/articles.json
+          git add data/articles.json public/articles.json
           git diff --staged --quiet || git commit -m "🗞️ نشر آلي لعمود (بين قوسين) - الساعة 10 مساءً بتوقيت الكويت"
           git push

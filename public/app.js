@@ -98,12 +98,27 @@ function initThemeAndFontControls() {
 async function loadArticles() {
   try {
     const res = await fetch('/api/articles');
-    const data = await res.json();
-    allArticles = data.articles || [];
-    renderAllArticles();
+    if (res.ok) {
+      const data = await res.json();
+      allArticles = data.articles || [];
+    }
   } catch (err) {
-    console.error('Failed to load articles:', err);
+    console.warn('API fallback to static articles.json:', err);
   }
+
+  // Fallback to static /articles.json if serverless API returned empty
+  if (!allArticles || allArticles.length === 0) {
+    try {
+      const staticRes = await fetch('/articles.json');
+      if (staticRes.ok) {
+        allArticles = await staticRes.json();
+      }
+    } catch (e) {
+      console.error('Failed to load static articles.json:', e);
+    }
+  }
+
+  renderAllArticles();
 }
 
 // Format satirical text: highlight ( ... ), « ... », and !!

@@ -1,13 +1,14 @@
 {
   "version": 2,
+  "functions": {
+    "api/*.js": {
+      "includeFiles": "data/**"
+    }
+  },
   "crons": [
     {
       "path": "/api/cron",
       "schedule": "0 19 * * *"
     }
-  ],
-  "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api/$1" },
-    { "source": "/(.*)", "destination": "/public/$1" }
   ]
 }
