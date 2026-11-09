@@ -63,9 +63,7 @@ body {
   color: #f9f6f0;
   font-size: 0.86rem;
   border-bottom: 2px solid var(--accent-crimson);
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  position: relative;
 }
 
 .ribbon-inner {
