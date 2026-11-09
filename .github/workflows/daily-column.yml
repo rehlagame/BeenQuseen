@@ -2,8 +2,11 @@ name: Daily 10 PM Kuwait Column Generator
 
 on:
   schedule:
-    # 19:00 UTC is 22:00 (10:00 PM) Kuwait Time (UTC+3)
+    # 19:00 UTC is 22:00 (10:00 PM) Kuwait Time (UTC+3).
+    # Backup ticks at 19:15 and 19:30 ensure GitHub never skips the daily edition (idempotent check skips if already published).
     - cron: '0 19 * * *'
+    - cron: '15 19 * * *'
+    - cron: '30 19 * * *'
   workflow_dispatch:
 
 permissions:
@@ -14,7 +17,7 @@ env:
 
 jobs:
   publish-daily-column:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -27,6 +30,7 @@ jobs:
       - name: Generate New Satirical Column
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          FORCE_GENERATE: ${{ github.event_name == 'workflow_dispatch' }}
         run: node scripts/generate-daily.js
 
       - name: Commit and Push New Edition to GitHub (Triggers Vercel Auto-Deploy)
