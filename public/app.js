@@ -150,9 +150,10 @@ function buildArticleCardHtml(article, isLatest = false) {
         <div class="vignette-block" id="vignette-${article.id}-${p.id}">
           <div class="vignette-header">
             <span class="vignette-topic-tag">📌 ${p.topic}</span>
-            <span style="font-size:0.78rem; color:var(--text-muted);">شذرة رقم (${idx + 1})</span>
+            <span class="vignette-num-pill">شذرة (${idx + 1})</span>
           </div>
           <h3 class="vignette-subhead">${p.headline || ''}</h3>
+          ${p.sourceNews ? `<div class="source-news-dateline">📰 <strong>الخبر المرصود:</strong> ${p.sourceNews}</div>` : ''}
           <p class="vignette-body">${formatSatiricalText(p.text)}</p>
 
           <div class="vignette-Toolbar">
